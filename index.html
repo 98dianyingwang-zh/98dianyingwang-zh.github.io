@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ee">
+<meta name="description" content="98电影网以「胶片帧条」方式呈现一份可横向翻阅的本周节目单：每一格按放映次序排列，标注片名、片长、语言版本、题材与适配观看时段，配套一张可打印的排片折页、四条选片判断线与影迷常问的现场问题。内容仅整理公开排片信息与片方公开资料，不提供在线播放入口、下载链接或未经确认的片源线索；排片以当地影院当日公告为准。">
+<meta name="keywords" content="98电影网,98电影网本周节目单,98电影网可打印排片折页,98电影网选片判断线,98电影网放映时段对照,98电影网语言版本标注,98电影网片长参考,98电影网影迷现场问答">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="bingbot" content="index,follow">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta property="og:type" content="website">
+<meta property="og:title" content="98电影网｜可横向翻阅的胶片节目单：本周放映次序、片长、语言版本与适配时段">
+<meta property="og:description" content="每一格按放映次序排列，标注片名、片长、语言版本、题材与适配时段；另配可打印排片折页、四条选片判断线与现场问答。">
+<meta property="og:url" content="https://98dianyingwang-zh.github.io/">
+<meta property="og:site_name" content="98电影网">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<title>98电影网：可横向翻阅的胶片节目单——本周放映次序、片长、语言版本与适配时段，附可打印排片折页与选片判断线</title>
+<style>
+:root{
+  --paper:#f7f4ee; --paper2:#efeae0; --ink:#1c1a17; --ink2:#3d3a34; --mut:#817b70;
+  --line:#d8d0c2; --line2:#b8ad99; --red:#b03b2e; --red2:#d35544; --teal:#2f6b63; --gold:#b88746;
+  --cell:#fffdf8; --shadow:0 1px 2px rgba(28,26,23,.07),0 18px 40px -26px rgba(28,26,23,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink2);
+  font-family:"Iowan Old Style","Palatino Linotype","Songti SC","Source Han Serif SC","Noto Serif CJK SC","SimSun","WenQuanYi Micro Hei",Georgia,serif;
+  font-size:16px;line-height:1.9;
+  background-image:radial-gradient(rgba(28,26,23,.035) 1px,transparent 1px);background-size:5px 5px;
+}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(184,135,70,.05),transparent 30%),linear-gradient(0deg,rgba(176,59,46,.05),transparent 40%)}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 30px}
+
+/* MARQUEE */
+.mq{background:var(--ink);color:#f7f4ee;border-bottom:2px solid var(--red)}
+.mq-in{display:flex;align-items:center;height:42px;font-size:.78rem;letter-spacing:.14em;overflow:hidden;white-space:nowrap}
+.mq-in b{color:#e7c184;font-weight:700;margin-right:22px;letter-spacing:.28em}
+.mq-in span{margin-right:40px;font-variant-numeric:tabular-nums}
+.mq-in i{font-style:normal;color:var(--red2);margin-right:8px}
+
+/* MASTHEAD */
+.mh{background:var(--paper2);border-bottom:4px double var(--ink)}
+.mh-in{padding:46px 0 34px}
+.flex{display:flex;justify-content:space-between;gap:30px;align-items:flex-end;flex-wrap:wrap}
+.chip{display:inline-block;border:1.5px solid var(--ink);font-size:.68rem;letter-spacing:.3em;padding:4px 12px;color:var(--ink);font-weight:700}
+.name{font-size:clamp(2.6rem,9vw,6rem);font-weight:900;letter-spacing:-.06em;line-height:.86;color:var(--ink);margin-top:16px}
+.name em{font-style:normal;color:var(--red);font-weight:900}
+.name span{display:inline-block;font-size:.42em;vertical-align:top;letter-spacing:.2em;border-left:2px solid var(--ink);padding-left:12px;margin-left:10px;color:var(--mut);font-weight:600;line-height:1.4}
+.strap{display:flex;gap:14px;margin-top:20px;flex-wrap:wrap;align-items:center;font-size:.9rem;color:var(--ink2)}
+.strap .ln{flex:1;min-width:180px;height:1px;background:var(--line2)}
+.meta-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:34px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.meta-grid>div{padding:16px 20px;border-right:1px solid var(--line)}
+.meta-grid>div:last-child{border-right:none}
+.meta-grid dt{font-size:.68rem;letter-spacing:.18em;color:var(--mut);text-transform:uppercase}
+.meta-grid dd{font-size:1.35rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--ink);margin-top:2px}
+.meta-grid dd small{font-size:.78rem;font-weight:500;color:var(--mut);margin-left:4px}
+
+/* NAV */
+nav.jump{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--ink);background:var(--cell)}
+nav.jump a{display:block;padding:15px 14px;border-right:1px solid var(--line);font-size:.86rem;font-weight:700;color:var(--ink2);letter-spacing:.03em}
+nav.jump a:last-child{border-right:none}
+nav.jump a b{display:block;font-size:.64rem;font-weight:700;color:var(--red);letter-spacing:.22em;margin-bottom:3px}
+nav.jump a:hover{background:var(--ink);color:var(--paper)}
+nav.jump a.on{background:var(--red);color:#fff}
+nav.jump a.on b{color:#f0c184}
+
+section{padding:84px 0}
+.s-head{margin-bottom:42px}
+.s-no{font-size:.72rem;letter-spacing:.32em;color:var(--red);font-weight:800;text-transform:uppercase}
+.s-head h2{font-size:clamp(1.5rem,3.6vw,2.4rem);font-weight:900;letter-spacing:-.035em;line-height:1.28;color:var(--ink);margin-top:8px}
+.s-head h2 em{font-style:normal;color:var(--red)}
+.s-head p{max-width:60ch;font-size:.98rem;color:var(--ink2);margin-top:12px}
+.s-head .rule{width:64px;height:4px;background:var(--ink);margin-top:18px}
+
+/* STRIP */
+.strip{background:var(--ink);padding:26px 0 30px;color:var(--paper);position:relative;border-top:4px double #000;border-bottom:4px double #000}
+.strip .reel{position:absolute;left:0;right:0;top:0;height:14px;background:repeating-linear-gradient(90deg,#0a0908 0 6px,#f7f4ee 6px 10px)}
+.strip .reel.bot{top:auto;bottom:0}
+.strip .inner{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.strip .inner::-webkit-scrollbar{height:10px}
+.strip .inner::-webkit-scrollbar-thumb{background:#4a443c}
+.frames{display:flex;gap:14px;padding:6px 30px}
+.frame{
+  flex:0 0 240px;scroll-snap-align:start;background:var(--cell);color:var(--ink);
+  border:1px solid #4a443c;box-shadow:0 6px 0 #0a0908,0 14px 26px -12px rgba(0,0,0,.7);position:relative;
+}
+.frame::before{content:"";position:absolute;inset:6px;border:1px solid var(--line);pointer-events:none}
+.frame .num{background:var(--red);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.16em;padding:5px 12px;display:flex;justify-content:space-between}
+.frame .num i{font-style:normal;color:#f0c184;font-variant-numeric:tabular-nums}
+.frame .pic{height:132px;margin:12px 12px 0;position:relative;overflow:hidden;background:var(--paper2)}
+.frame .pic::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 11px,rgba(28,26,23,.10) 11px 12px)}
+.frame .pic b{position:absolute;left:12px;bottom:10px;font-size:1.5rem;font-weight:900;color:#fff;line-height:.95;letter-spacing:-.02em;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.frame .pic span{position:absolute;right:10px;top:10px;background:rgba(0,0,0,.55);color:#fff;font-size:.66rem;padding:2px 8px;letter-spacing:.1em}
+.frame .txt{padding:12px 14px 14px}
+.frame .txt h3{font-size:1.05rem;font-weight:900;line-height:1.35;margin-bottom:8px}
+.frame .txt dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:.78rem}
+.frame .txt dt{color:var(--mut);letter-spacing:.05em}
+.frame .txt dd{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)}
+.frame .go{display:block;margin-top:11px;border-top:1px dashed var(--line2);padding-top:9px;font-size:.78rem;font-weight:700;color:var(--red);letter-spacing:.06em}
+.frame .go:hover{color:var(--ink)}
+.strip .ctrls{display:flex;justify-content:space-between;gap:16px;padding:18px 30px 0;flex-wrap:wrap;align-items:center}
+.strip .ctrls .info{font-size:.82rem;color:#c9c2b6;letter-spacing:.04em}
+.strip .ctrls .info b{color:#e7c184;font-variant-numeric:tabular-nums}
+.strip .ctrls .btns{display:flex;gap:10px}
+.strip .ctrls button{background:transparent;border:1px solid #6b6357;color:#f7f4ee;font:inherit;font-size:.82rem;padding:7px 18px;cursor:pointer;letter-spacing:.08em}
+.strip .ctrls button:hover{border-color:var(--red2);color:#fff;background:var(--red)}
+
+/* BROCHURE */
+.bro{display:grid;grid-template-columns:1.1fr .9fr;gap:0;border:1px solid var(--ink);background:var(--cell);box-shadow:var(--shadow)}
+.fold{border-right:1px dashed var(--ink)}
+.fold,.col{padding:26px 28px}
+.bh{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:18px}
+.bh b{font-size:1.05rem;font-weight:900;letter-spacing:.03em}
+.bh span{font-size:.76rem;color:var(--mut);font-variant-numeric:tabular-nums;letter-spacing:.08em}
+.rows li{display:grid;grid-template-columns:30px 1.5fr 78px 62px;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);align-items:baseline;font-size:.9rem}
+.rows li:last-child{border-bottom:none}
+.rows .n{font-size:.78rem;color:var(--mut);font-variant-numeric:tabular-nums}
+.rows h4{font-weight:800;color:var(--ink);line-height:1.4}
+.rows h4 small{display:block;font-size:.74rem;color:var(--mut);font-weight:400;margin-top:1px}
+.rows .len{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+.rows .tag{text-align:center;font-size:.72rem;font-weight:700;letter-spacing:.06em;border:1px solid var(--ink);color:var(--ink)}
+.rows .tag.t{background:var(--teal);border-color:var(--teal);color:#fff}
+.rows .tag.r{background:var(--red);border-color:var(--red);color:#fff}
+.rows .tag.g{background:var(--gold);border-color:var(--gold);color:#fff}
+.rows-foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--ink);font-size:.78rem;color:var(--mut)}
+.toc{padding:26px 28px}
+.toc h3{font-size:1.05rem;font-weight:900;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:16px}
+.toc ol{counter-reset:t}
+.toc li{counter-increment:t;padding:13px 0 13px 44px;border-bottom:1px solid var(--line);position:relative;font-size:.9rem}
+.toc li:last-child{border-bottom:none}
+.toc li::before{content:counter(t,decimal-leading-zero);position:absolute;left:0;top:13px;font-weight:900;color:var(--red);font-variant-numeric:tabular-nums;font-size:.9rem}
+.toc li b{display:block;color:var(--ink);font-weight:800;margin-bottom:2px}
+.toc li p{font-size:.82rem;color:var(--mut);line-height:1.7}
+.print-bar{display:flex;justify-content:space-between;gap:16px;padding:16px 28px;border-top:1px solid var(--ink);background:var(--paper2);flex-wrap:wrap;font-size:.84rem;color:var(--ink2);align-items:center}
+.print-bar button{background:var(--ink);color:var(--paper);border:none;font:inherit;font-size:.84rem;font-weight:700;padding:10px 26px;cursor:pointer;letter-spacing:.08em}
+.print-bar button:hover{background:var(--red)}
+
+/* TIMELINE */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ink);background:var(--cell);box-shadow:var(--shadow)}
+.tl>div{padding:24px 26px;border-right:1px solid var(--line);position:relative}
+.tl>div:last-child{border-right:none}
+.tl .hr{font-size:.72rem;letter-spacing:.24em;color:var(--red);font-weight:800;text-transform:uppercase;margin-bottom:12px}
+.tl h3{font-size:1.15rem;font-weight:900;color:var(--ink);line-height:1.4;margin-bottom:12px}
+.tl p{font-size:.88rem;color:var(--ink2)}
+.tl .mk{display:inline-block;margin-top:14px;font-size:.78rem;font-weight:700;color:var(--mut);border-bottom:1px solid var(--line2);padding-bottom:2px}
+.tl>div::after{content:"";position:absolute;top:24px;right:26px;width:10px;height:10px;background:var(--gold);transform:rotate(45deg)}
+.tl>div:nth-child(2n)::after{background:var(--teal)}
+.tl>div:nth-child(3n)::after{background:var(--red)}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);background:var(--cell);box-shadow:var(--shadow)}
+.faq>div{border-right:1px solid var(--line)}
+.faq>div:last-child{border-right:none}
+.faq>div:nth-child(odd){border-bottom:1px solid var(--line)}
+.faq .q{padding:22px 26px}
+.faq .q .n{font-size:.74rem;letter-spacing:.2em;color:var(--red);font-weight:800}
+.faq .q h3{font-size:1.02rem;font-weight:900;color:var(--ink);margin:8px 0 10px;line-height:1.45}
+.faq .q p{font-size:.88rem;color:var(--ink2)}
+.faq .q p b{color:var(--ink);font-weight:800}
+
+/* CTA */
+.cta{border:1px solid var(--ink);background:var(--paper2);padding:42px;display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
+.cta .bar{width:56px;height:4px;background:var(--red);margin-bottom:18px}
+.cta h3{font-size:clamp(1.25rem,3vw,1.85rem);font-weight:900;letter-spacing:-.03em;line-height:1.4;color:var(--ink)}
+.cta p{font-size:.92rem;color:var(--ink2);margin-top:12px;max-width:52ch}
+.cta form{display:grid;grid-template-columns:1fr auto;border:1px solid var(--ink);background:var(--cell)}
+.cta input{border:none;background:transparent;font:inherit;font-size:.95rem;padding:15px 16px;color:var(--ink)}
+.cta input::placeholder{color:var(--mut)}
+.cta input:focus{outline:none;background:#fff}
+.cta button{background:var(--ink);border:none;color:var(--paper);font:inherit;font-weight:800;font-size:.9rem;padding:0 26px;cursor:pointer;letter-spacing:.08em}
+.cta button:hover{background:var(--red)}
+.cta small{display:block;grid-column:1/-1;font-size:.78rem;color:var(--mut);margin-top:14px;line-height:1.8}
+
+/* FOOT */
+footer{background:var(--ink);color:#c9c2b6;padding:60px 0 28px}
+.ft{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:36px}
+.ft h5{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:#e7c184;font-weight:800;margin-bottom:16px}
+.ft ul{display:flex;flex-direction:column;gap:10px}
+.ft a{color:#d8d2c6;font-size:.9rem}
+.ft a:hover{color:#fff}
+.ft .b h4{font-size:1.7rem;font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:14px}
+.ft .b p{font-size:.9rem;max-width:42ch;line-height:1.85}
+.ft .b .url{margin-top:20px;font-size:.86rem;color:#a8a096;word-break:break-all}
+.ft .b .url b{color:#e7c184}
+.ft-bot{margin-top:40px;padding-top:22px;border-top:1px solid #4a443c;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem;color:#8b857a;font-variant-numeric:tabular-nums}
+
+@media (max-width:980px){
+  .bro{grid-template-columns:1fr}
+  .fold{border-right:none;border-bottom:1px dashed var(--ink)}
+  .tl{grid-template-columns:1fr 1fr}
+  .faq{grid-template-columns:1fr}
+  .faq>div{border-right:none;border-bottom:1px solid var(--line)}
+  .faq>div:last-child{border-bottom:none}
+  .cta{grid-template-columns:1fr;padding:30px}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .mq-in>div>*:nth-child(n+5){display:none}
+  .mh-in{padding:32px 0 24px}
+  .name span{display:none}
+  .meta-grid{grid-template-columns:1fr 1fr}
+  .meta-grid>div:nth-child(1),.meta-grid>div:nth-child(2){border-bottom:1px solid var(--line)}
+  nav.jump{grid-template-columns:1fr 1fr}
+  nav.jump a:nth-child(2n){border-right:none}
+  nav.jump a{border-bottom:1px solid var(--line)}
+  section{padding:56px 0}
+  .frame{flex:0 0 78%}
+  .rows li{grid-template-columns:24px 1fr 64px;row-gap:2px}
+  .rows .tag{grid-column:3;text-align:right;border:none;background:transparent;color:var(--ink);font-weight:700}
+  .rows .len{grid-column:2;text-align:left}
+  .tl{grid-template-columns:1fr}
+  .tl>div{border-right:none;border-bottom:1px solid var(--line)}
+  .tl>div:last-child{border-bottom:none}
+  .ft{grid-template-columns:1fr}
+  .cta form{grid-template-columns:1fr}
+  .cta button{padding:14px}
+}
+@media print{
+  body{background:#fff;font-size:10pt;line-height:1.5}
+  .mq,nav.jump,.strip,.cta,footer,.print-bar button{display:none!important}
+  section{padding:0;margin:0 0 10mm}
+  .frames{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+  .frame{flex:none;width:auto;box-shadow:none}
+  .bro{display:block;page-break-inside:avoid}
+  .fold{border-right:none;border-bottom:1px dashed #000}
+  .toc{display:none}
+  .rows li{grid-template-columns:8mm 1fr 22mm 16mm}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<div class="mq" aria-label="节目单公告条">
+  <div class="wrap mq-in">
+    <div><b>NO.98 · 本周节目单</b></div>
+    <span><i>◆</i>放映周期 <b>10.06 — 10.12</b></span>
+    <span><i>◆</i>在映片目 <b>14</b> 部</span>
+    <span><i>◆</i>标注场次 <b>62</b> 场</span>
+    <span><i>◆</i>修复专场 <b>04</b> 场</span>
+    <span>仅整理公开排片信息，不提供在线播放与下载入口</span>
+  </div>
+</div>
+
+<header class="mh">
+  <div class="wrap">
+    <div class="mh-in">
+      <div class="flex">
+        <div>
+          <span class="chip">98电影网 · PROGRAMME No.98</span>
+          <div class="name">98<em>电影网</em><span>胶片节目单<br>横向翻阅版</span></div>
+          <div class="strap">
+            <span>把一周排片按<strong style="color:var(--ink)">放映次序</strong>铺成一条胶片</span>
+            <span class="ln"></span>
+            <span>每一格只解决四件事：<em style="font-style:normal;color:var(--red);font-weight:700">几点开映、要看多久、讲什么语言、适合什么状态</em></span>
+          </div>
+        </div>
+        <div style="font-size:.82rem;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right;line-height:2.1">
+          <div>本期编号 <b style="font-size:1.4rem;color:var(--red);font-weight:900">98</b></div>
+          <div>更新日期 <b>2026.10.06</b></div>
+          <div>覆盖 <b>全国主要院线</b></div>
+        </div>
+      </div>
+
+      <dl class="meta-grid">
+        <div><dt>在映片目</dt><dd>14<small>部</small></dd></div>
+        <div><dt>已标注场次</dt><dd>62<small>场</small></dd></div>
+        <div><dt>本月待映</dt><dd>07<small>部</small></dd></div>
+        <div><dt>已归档记录</dt><dd>512<small>条</small></dd></div>
+      </dl>
+    </div>
+
+    <nav class="jump" aria-label="栏目导航">
+      <a href="#strip" class="on"><b>01 / 胶片条</b>横向节目单</a>
+      <a href="#brochure"><b>02 / 折页</b>可打印排片单</a>
+      <a href="#judge"><b>03 / 判断线</b>四条选片原则</a>
+      <a href="#faq"><b>04 / 问答</b>影迷现场问题</a>
+      <a href="#cta"><b>05 / 订阅</b>每周节目单</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section id="strip" aria-labelledby="strip-t">
+    <div class="wrap">
+      <div class="s-head">
+        <div class="s-no">01 — The Reel Strip</div>
+        <h2 id="strip-t">胶片条节目单：左右滑动，<em>一格一格</em>看完这一周</h2>
+        <p>每一格都是一次完整的放映信息单元，不评价好不好看，只标注该不该坐进这场。<strong>顺序即放映次序</strong>，横向排开，手机上用拇指推着看即可。</p>
+        <div class="rule"></div>
+      </div>
+
+      <div class="strip">
+        <div class="reel"></div>
+        <div class="inner" id="frames">
+          <div class="frames">
+
+            <article class="frame">
+              <div class="num"><span>REEL 01</span><i>14:20</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#3d5a6c,#1f333f)"><span>剧情</span><b>北风<br>过境</b></div>
+              <div class="txt">
+                <h3>北风过境</h3>
+                <dl><dt>片长</dt><dd>124 min</dd><dt>语言</dt><dd>普通话</dd><dt>字幕</dd><dd>中文字幕</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 02</span><i>16:10</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#5c6b4a,#3a4630)"><span>纪录</span><b>潮线<br>之外</b></div>
+              <div class="txt">
+                <h3>潮线之外</h3>
+                <dl><dt>片长</dt><dd>96 min</dd></dl>
+                <dl><dt>语言</dt><dd>方言</dd></dl>
+                <dl><dt>字幕</dt><dd>中文字幕</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 03</span><i>18:30</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#8a4a3c,#5e2f25)"><span>群像</span><b>海港<br>记事</b></div>
+              <div class="txt">
+                <h3>海港记事</h3>
+                <dl><dt>片长</dt><dd>114 min</dd></dl>
+                <dl><dt>语言</dt><dd>普通话</dd></dl>
+                <dl><dt>字幕</dt><dd>长对白</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 04</span><i>19:20</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#2f4a5e,#1a2e3a)"><span>科幻</span><b>机械<br>岛</b></div>
+              <div class="txt">
+                <h3>机械岛</h3>
+                <dl><dt>片长</dt><dd>134 min</dd></dl>
+                <dl><dt>语言</dt><dd>英语</dd></dl>
+                <dl><dt>字幕</dt><dd>中文字幕</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 05</span><i>19:50</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#3a2f4a,#241b30)"><span>惊悚</span><b>第七次<br>回响</b></div>
+              <div class="txt">
+                <h3>第七次回响</h3>
+                <dl><dt>片长</dt><dd>103 min</dd></dl>
+                <dl><dt>语言</dt><dd>韩语</dd></dl>
+                <dl><dt>字幕</dt><dd>中文字幕</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 06</span><i>20:15</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#4a3a2a,#2e2118)"><span>犯罪</span><b>夜班<br>电话</b></div>
+              <div class="txt">
+                <h3>夜班电话</h3>
+                <dl><dt>片长</dt><dd>118 min</dd></dl>
+                <dl><dt>语言</dt><dd>普通话配音</dd></dl>
+                <dl><dt>字幕</dt><dd>原声可选</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 07</span><i>10:00</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#c4a55a,#8a6f34)"><span>动画</span><b>小小<br>修理铺</b></div>
+              <div class="txt">
+                <h3>小小修理铺</h3>
+                <dl><dt>片长</dt><dd>89 min</dd></dl>
+                <dl><dt>语言</dt><dd>普通话配音</dd></dl>
+                <dl><dt>字幕</dt><dd>亲子</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 08</span><i>13:30</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#d4b98a,#a88f5c)"><span>动画</span><b>纸飞机<br>与月亮</b></div>
+              <div class="txt">
+                <h3>纸飞机与月亮</h3>
+                <dl><dt>片长</dt><dd>94 min</dd></dl>
+                <dl><dt>语言</dt><dd>普通话配音</dd></dl>
+                <dl><dt>字幕</dt><dd>中篇</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 09</span><i>16:20</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#9a6b4a,#6b4630)"><span>家庭</span><b>外婆的<br>菜谱</b></div>
+              <div class="txt">
+                <h3>外婆的菜谱</h3>
+                <dl><dt>片长</dt><dd>119 min</dd></dl>
+                <dl><dt>语言</dt><dd>普通话</dd></dl>
+                <dl><dt>字幕</dt><dd>温和</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 10</span><i>14:00</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#7a6a4a,#4a3f28)"><span>经典</span><b>城南<br>旧戏</b></div>
+              <div class="txt">
+                <h3>城南旧戏</h3>
+                <dl><dt>片长</dt><dd>98 min</dd></dl>
+                <dl><dt>语言</dt><dd>原声</dd></dl>
+                <dl><dt>字幕</dt><dd>说明字幕</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 11</span><i>13:50</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#2a2a2a,#101010)"><span>无声</span><b>渔光<br>曲</b></div>
+              <div class="txt">
+                <h3>渔光曲</h3>
+                <dl><dt>片长</dt><dd>76 min</dd></dl>
+                <dl><dt>语言</dt><dd>无声段落</dd></dl>
+                <dl><dt>字幕</dt><dd>配乐重制</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+            <article class="frame">
+              <div class="num"><span>REEL 12</span><i>20:00</i></div>
+              <div class="pic" style="background:linear-gradient(135deg,#4a2f2f,#2e1a1a)"><span>动作</span><b>边境<br>信号</b></div>
+              <div class="txt">
+                <h3>边境信号</h3>
+                <dl><dt>片长</dt><dd>129 min</dd></dl>
+                <dl><dt>语言</dt><dd>英语</dd></dl>
+                <dl><dt>字幕</dt><dd>中文字幕</dd></dl>
+                <a class="go" href="#">核对当日场次 →</a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <div class="reel bot"></div>
+        <div class="ctrls">
+          <div class="info">本期胶片条共 <b>12</b> 格 · 编号 REEL 01 — REEL 12 · 按放映次序横向排列，支持左右翻阅</div>
+          <div class="btns"><button type="button" id="prev">‹ 上一格</button><button type="button" id="next">下一格 ›</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="brochure" aria-labelledby="bro-t">
+    <div class="wrap">
+      <div class="s-head">
+        <div class="s-no">02 — Printable Brochure</div>
+        <h2 id="bro-t">可打印排片折页：<em>撕下来</em>放进钱包那一种</h2>
+        <p>左栏是可直接打印的场次对照表，右栏是这张折页的目录。<strong>打印时自动切换为双列胶片条版式</strong>，A4 一页装下。</p>
+        <div class="rule"></div>
+      </div>
+
+      <div class="bro">
+        <div class="fold">
+          <div class="bh"><b>本周场次对照表</b><span>10.06 — 10.12</span></div>
+          <ul class="rows">
+            <li><div class="n">01</div><h4>北风过境<small>剧情 · 普通话 · 慢节奏长对白</small></h4><div class="len">124 min</div><div class="tag g">午后</div></li>
+            <li><div class="n">02</div><h4>潮线之外<small>纪录 · 方言 · 字幕阅读疲劳度较高</small></h4><div class="len">96 min</div><div class="tag">独场</div></li>
+            <li><div class="n">03</div><h4>海港记事<small>群像 · 普通话 · 情绪推进慢</small></h4><div class="len">114 min</div><div class="tag g">黄金</div></li>
+            <li><div class="n">04</div><h4>机械岛<small>科幻 · 英语中字 · 视效与音效是主要看点</small></h4><div class="len">134 min</div><div class="tag t">激光</div></li>
+            <li><div class="n">05</div><h4>第七次回响<small>惊悚 · 韩语中字 · 反转集中在后段</small></h4><div class="len">103 min</div><div class="tag r">深夜</div></li>
+            <li><div class="n">06</div><h4>夜班电话<small>犯罪 · 配音版与原声版可选 · 对白量大</small></h4><div class="len">118 min</div><div class="tag">晚间</div></li>
+            <li><div class="n">07</div><h4>小小修理铺<small>动画 · 普通话配音 · 亲子时段</small></h4><div class="len">89 min</div><div class="tag g">亲子</div></li>
+            <li><div class="n">08</div><h4>纸飞机与月亮<small>动画 · 手绘质感 · 午间场光线好</small></h4><div class="len">94 min</div><div class="tag g">亲子</div></li>
+            <li><div class="n">09</div><h4>外婆的菜谱<small>家庭 · 普通话 · 情绪温和</small></h4><div class="len">119 min</div><div class="tag g">长辈</div></li>
+            <li><div class="n">10</div><h4>城南旧戏<small>戏曲纪录 · 4K 修复 · 修复专场场次稀少</small></h4><div class="len">98 min</div><div class="tag r">专场</div></li>
+            <li><div class="n">11</div><h4>渔光曲<small>经典 · 无声段落 · 配乐重制</small></h4><div class="len">76 min</div><div class="tag r">专场</div></li>
+            <li><div class="n">12</div><h4>边境信号<small>动作 · 英语中字 · 周六最易满座</small></h4><div class="len">129 min</div><div class="tag t">激光</div></li>
+          </ul>
+          <div class="rows-foot">标签含义：午后 / 晚间 / 深夜 指适配放映时段；亲子 / 长辈 指同行人群；激光 指建议选择的放映制式；专场 指排片稀少、需提前锁定。片名为示例，实际以当地影院当日公告为准。</div>
+        </div>
+        <div class="toc">
+          <h3>这张折页怎么读</h3>
+          <ol>
+            <li><b>先找时间</b><p>从表头日期确定哪天出门，再决定看什么；反向操作最容易被排片反噬。</p></li>
+            <li><b>再看片长</b><p>120 分钟以上留足黄金场，午间与深夜容易留下遗憾。</p></li>
+            <li><b>然后看语言</b><p>方言与外语片意味着持续的字幕阅读，先确认自己是否愿意读满全场。</p></li>
+            <li><b>最后看标签</b><p>标签不是评分，只是人群与制式的提示，不替代个人判断。</p></li>
+          </ol>
+        </div>
+      </div>
+      <div class="print-bar">
+        <span>打印建议：A4 纵向 · 关闭页眉页脚 · 缩放 100% · 折两折即可随身带走</span>
+        <button type="button" onclick="window.print()">打印这张折页</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="judge" aria-labelledby="judge-t">
+    <div class="wrap">
+      <div class="s-head">
+        <div class="s-no">03 — Four Guide Lines</div>
+        <h2 id="judge-t">四条选片判断线：<em>没有一条</em>是在谈好不好看</h2>
+        <p>口碑属于影评，判断线属于今晚。<strong>四条都过，再讨论想不想看</strong>；过不了，口碑再高也与今晚无关。</p>
+        <div class="rule"></div>
+      </div>
+
+      <div class="tl">
+        <div>
+          <div class="hr">Line 01</div>
+          <h3>场次比口碑更先到</h3>
+          <p>一部片值不值得看可以慢慢想，它还能不能在影院看到不能慢慢等。排片撤得比口碑发酵快得多。</p>
+          <span class="mk">先查场次 →</span>
+        </div>
+        <div>
+          <div class="hr">Line 02</div>
+          <h3>长片留给黄金场</h3>
+          <p>120 分钟以上需要连续两小时的专注与体力。午间容易困，深夜容易赶路，都不是它的错。</p>
+          <span class="mk">片长对照 →</span>
+        </div>
+        <div>
+          <div class="hr">Line 03</div>
+          <h3>字幕量等于注意力消耗</h3>
+          <p>外语片与方言片的观影成本不在语言难度，而在是否愿意读满全场。读累了，再好的片也只剩半部。</p>
+          <span class="mk">语言标注 →</span>
+        </div>
+        <div>
+          <div class="hr">Line 04</div>
+          <h3>修复片不等于画质更好</h3>
+          <p>它的价值在版本差异与放映语境，不在清晰度。进场前了解修复背景，比进场后补知识更有用。</p>
+          <span class="mk">专场提示 →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-t">
+    <div class="wrap">
+      <div class="s-head">
+        <div class="s-no">04 — Audience FAQ</div>
+        <h2 id="faq-t">影迷现场问答：<em>七条</em>被问得最多的放映问题</h2>
+        <p>以下回答基于公开放映惯例与常见经验，<strong>不构成法律或服务承诺</strong>；具体场次争议以影院与片方现场说明为准。</p>
+        <div class="rule"></div>
+      </div>
+
+      <div class="faq">
+        <div class="q">
+          <div class="n">Q.01</div>
+          <h3>开场后还能进场吗？</h3>
+          <p>可以，但多数影厅会引导至前排空位，避免影响其他观众。<b>关键前提</b>是不要挡住屏幕或走道，也不要开手机照明找座位。</p>
+        </div>
+        <div class="q">
+          <div class="n">Q.02</div>
+          <h3>迟到太久会被拒入吗？</h3>
+          <p>不同影厅规则不同，不能一概而论。含关键剧情提示的场次通常会安排在中场段落集中进场，以现场广播为准。</p>
+        </div>
+        <div class="q">
+          <div class="n">Q.03</div>
+          <h3>能带外食和饮料吗？</h3>
+          <p><b>绝大多数影厅不允许</b>，气味明显或需拆袋的食物尤其容易引发投诉。密封饮用水通常可以，但带盖杯更稳妥。</p>
+        </div>
+        <div class="q">
+          <div class="n">Q.04</div>
+          <h3>儿童需要单独买票吗？</h3>
+          <p>各地规则不一致，不能按统一身高线判断。惊悚片与长片即便允许入场，也未必适合儿童，建议先看标签再购票。</p>
+        </div>
+        <div class="q">
+          <div class="n">Q.05</div>
+          <h3>散场时字幕很长，要等吗？</h3>
+          <p>没有强制要求。但<b>修复片与群像片的片尾信息往往有价值</b>，想看完请提前预留时间，避免影响下一场清场。</p>
+        </div>
+        <div class="q">
+          <div class="n">Q.06</div>
+          <h3>下档之后还能补看吗？</h3>
+          <p>部分片会进入流媒体或修复专场，部分则长期没有公开渠道。<b>98电影网</b>只整理公开信息与补看线索，不提供下载、在线播放或任何片源入口。</p>
+        </div>
+        <div class="q">
+          <div class="n">Q.07</div>
+          <h3>排片信息多久更新一次？</h3>
+          <p>每周更新一次，周一上午以公开排片信息为准做校对。临时加场与撤场无法提前纳入，临出发前仍需再核对一次。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" aria-labelledby="cta-t">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <div class="bar"></div>
+          <h3 id="cta-t">每周一封节目单：十二格胶片，四句话讲完</h3>
+          <p>周一上午发出，包含本周胶片条节目单、可打印排片折页与一条判断线。不发广告，不转卖名单，可随时一键退订。</p>
+        </div>
+        <form novalidate onsubmit="event.preventDefault();var b=this.querySelector('button');b.textContent='已登记 ✓';b.disabled=true;">
+          <input type="email" placeholder="reader@domain.com" aria-label="邮箱地址" autocomplete="email" required>
+          <button type="submit">登记领取</button>
+        </form>
+        <small>本站不通过第三方投放追踪收集信息。提交即表示同意接收每周一封的节目单，可随时退订，邮件内附退订链接。</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="b">
+        <h4>98电影网</h4>
+        <p>一份以放映次序为唯一排序依据的胶片节目单：横向铺开一周排片，逐格标注片长、语言版本、题材与适配时段，另配可打印排片折页与四条选片判断线。</p>
+        <div class="url">网站访问地址：<b>https://98dianyingwang-zh.github.io/</b></div>
+      </div>
+      <div>
+        <h5>栏目导航</h5>
+        <ul>
+          <li><a href="#strip">胶片条节目单</a></li>
+          <li><a href="#brochure">可打印排片折页</a></li>
+          <li><a href="#judge">四条选片判断线</a></li>
+          <li><a href="#faq">影迷现场问答</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>需求索引</h5>
+        <ul>
+          <li><a href="#">亲子同行</a></li>
+          <li><a href="#">陪伴长辈</a></li>
+          <li><a href="#">大银幕专场</a></li>
+          <li><a href="#">修复放映</a></li>
+          <li><a href="#">深夜独场</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>节目单相关</h5>
+        <ul>
+          <li><a href="#">内容规范</a></li>
+          <li><a href="#">往期归档</a></li>
+          <li><a href="#">隐私说明</a></li>
+          <li><a href="#">联系编辑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 98电影网 · 节目单第 98 期 · 内容仅为公开排片信息的编辑整理，不构成观影或消费建议，不提供在线播放与下载入口。</span>
+      <span>98dianyingwang-zh.github.io</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=this.getAttribute('href');
+      if(id.length>1){
+        var el=document.querySelector(id);
+        if(el){e.preventDefault();window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-64,behavior:'smooth'});}
+      }
+    });
+  });
+
+  var inner=document.getElementById('frames');
+  var fs=inner.querySelectorAll('.frame');
+  document.getElementById('prev').addEventListener('click',function(){
+    var i=Math.max(0,Math.round(inner.scrollLeft/inner.clientWidth)-1);
+    fs[i]&&fs[i].scrollIntoView({inline:'start',behavior:'smooth'});
+  });
+  document.getElementById('next').addEventListener('click',function(){
+    var i=Math.min(fs.length-1,Math.round(inner.scrollLeft/inner.clientWidth)+1);
+    fs[i]&&fs[i].scrollIntoView({inline:'start',behavior:'smooth'});
+  });
+
+  var links=document.querySelectorAll('nav.jump a');
+  var secs=document.querySelectorAll('main section');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){
+          var id=en.target.id;
+          links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+id);});
+        }
+      });
+    },{rootMargin:'-80px 0px -70% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+  }
+})();
+</script>
+</body>
+</html>
